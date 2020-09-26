@@ -3,8 +3,8 @@ on:
   push:
     branches: [ master ]
 
-env:
-  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+# env:
+#   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   deploy:
@@ -28,18 +28,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
 
-      - name: Slack Notification on Success
-        if: success()
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_CHANNEL: ci
-          SLACK_TITLE: Test Success
-          SLACK_COLOR: good
+#      - name: Slack Notification on Success
+#        if: success()
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        env:
+#          SLACK_CHANNEL: ci
+#          SLACK_TITLE: Test Success
+#          SLACK_COLOR: good
 
-      - name: Slack Notification on Failure
-        uses: rtCamp/action-slack-notify@v2.0.2
-        if: failure()
-        env:
-          SLACK_CHANNEL: ci
-          SLACK_TITLE: Test Failure
-          SLACK_COLOR: danger
+#      - name: Slack Notification on Failure
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        if: failure()
+#        env:
+#          SLACK_CHANNEL: ci
+#          SLACK_TITLE: Test Failure
+#          SLACK_COLOR: danger
